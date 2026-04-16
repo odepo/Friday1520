@@ -1,0 +1,50 @@
+[
+  {
+    "ticker": "4635",
+    "name": "Tokyo Printing Ink Mfg. Co., Ltd.",
+    "price": 1361,
+    "diff_val": -30,
+    "diff_pct": -2.2,
+    "lc_price": 1296,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 92,
+    "comment": "偵察。打診買い。"
+  },
+  {
+    "ticker": "4471",
+    "name": "Sanyo Chemical Industries, Ltd.",
+    "price": 5220,
+    "diff_val": 0,
+    "diff_pct": 0.0,
+    "lc_price": 4963,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 69,
+    "comment": "偵察。打診買い。"
+  },
+  {
+    "ticker": "5334",
+    "name": "Niterra Co., Ltd.",
+    "price": 8295,
+    "diff_val": 54,
+    "diff_pct": 0.7,
+    "lc_price": 7750,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 97,
+    "comment": "偵察。打診買い。"
+  },
+  {
+    "ticker": "3498",
+    "name": "Kasumigaseki Capital Co.,Ltd.",
+    "price": 6390,
+    "diff_val": 110,
+    "diff_pct": 1.8,
+    "lc_price": 5952,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 93,
+    "comment": "偵察。打診買い。"
+  }
+]
