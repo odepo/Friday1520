@@ -4,11 +4,17 @@ import numpy as np
 import json
 import datetime
 
-# --- 初期設定 ---
-WATCH_LIST = ["4635.T", "4471.T", "5334.T", "3498.T"] 
+# --- 【配当工場】精鋭24銘柄リスト ---
+WATCH_LIST = [
+    "4635.T", "4471.T", "5334.T", "3498.T", "7164.T", 
+    "8593.T", "9368.T", "5076.T", "6293.T", "4481.T", 
+    "2154.T", "4043.T", "6070.T", "7995.T", "3244.T", 
+    "9303.T", "4221.T", "9436.T", "6323.T", "8005.T",
+    "8058.T", "7203.T", "9104.T", "8306.T" # 三菱商事, トヨタ, 商船三井, 三菱UFJを追加
+]
+
 OUTPUT_FILE = "result.json"
 
-# 統計データ（ランクAの目安）
 STATS_RANK_A = {
     "win_rate": {"value": 72, "avg": 50},
     "pf": {"value": 2.1, "avg": 1.2},
@@ -23,22 +29,18 @@ def calculate_rci(series, period=9):
     return series.rolling(window=period).apply(_rci)
 
 def analyze_stock(ticker):
-    # 銘柄名を取得
     t_obj = yf.Ticker(ticker)
-    s_name = t_obj.info.get('longName', ticker)
+    s_name = t_obj.info.get('shortName', ticker)
     
-    # データを取得
     df = yf.download(ticker, period="2y", interval="1wk", progress=False)
     if df.empty or len(df) < 30: return None
 
-    # 列名の「Adj Close」を「Close」として扱う（マルチインデックス対策）
-    close_col = 'Close'
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.get_level_values(0)
 
+    close_col = 'Close'
     df['rci9'] = calculate_rci(df[close_col], 9)
     df['ma20'] = df[close_col].rolling(window=20).mean()
-    df['std20'] = df[close_col].rolling(window=20).std()
     
     df['high_low_range'] = (df['High'] - df['Low']) / df['Low'] * 100
     w3 = df['high_low_range'].iloc[-5:].mean() 
@@ -47,24 +49,23 @@ def analyze_stock(ticker):
     
     vcp_score = 0
     if w3 < 5.0: vcp_score += 50
-    if last_vol < avg_vol * 0.7: vcp_score += 50 
+    if last_vol < avg_vol * 0.8: vcp_score += 50 
 
     last = df.iloc[-1]
     prev = df.iloc[-2]
     rci_rev = last['rci9'] > prev['rci9'] and last['rci9'] < 20
     
-    # 前日比などの計算
     price = int(last[close_col])
     diff_val = int(last[close_col] - prev[close_col])
     diff_pct = round((diff_val / prev[close_col]) * 100, 1)
-    lc_price = int(last['Low'] * 0.96) # 直近安値付近を損切り目安に
+    lc_price = int(last['Low'] * 0.96)
 
-    rank = "C"; stats = None; comment = "偵察。打診買い。"
+    rank = "C"; stats = None; comment = "偵察。監視継続。"
     if rci_rev and vcp_score >= 80:
         rank = "A"; stats = STATS_RANK_A
-        comment = "成り行き買いで執行せよ！VCP収束と15:20需給の完全一致。迷わず行け！"
-    elif rci_rev:
-        rank = "B"; comment = "標準ロット。トレンド開始待ち。"
+        comment = "【執行対象】VCP収縮を確認。成り行きで執行せよ！"
+    elif rci_rev or vcp_score >= 50:
+        rank = "B"; comment = "チャンス近し。週足の形を注視。"
 
     return {
         "ticker": ticker.replace(".T", ""),
@@ -89,5 +90,4 @@ if __name__ == "__main__":
             print(f"Error {t}: {e}")
             
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        # ここを ensure_ascii に修正しました！
         json.dump(results, f, ensure_ascii=False, indent=2)
