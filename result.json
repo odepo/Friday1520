@@ -1,7 +1,7 @@
 [
   {
     "ticker": "4635",
-    "name": "Tokyo Printing Ink Mfg. Co., Ltd.",
+    "name": "TOKYO PRINTING INK MFG CO",
     "price": 1361,
     "diff_val": -30,
     "diff_pct": -2.2,
@@ -9,23 +9,23 @@
     "rank": "C",
     "stats": null,
     "vol_dry": 92,
-    "comment": "偵察。打診買い。"
+    "comment": "偵察。監視継続。"
   },
   {
     "ticker": "4471",
-    "name": "Sanyo Chemical Industries, Ltd.",
+    "name": "SANYO CHEMICAL INDUSTRIES",
     "price": 5220,
     "diff_val": 0,
     "diff_pct": 0.0,
     "lc_price": 4963,
-    "rank": "C",
+    "rank": "B",
     "stats": null,
     "vol_dry": 69,
-    "comment": "偵察。打診買い。"
+    "comment": "チャンス近し。週足の形を注視。"
   },
   {
     "ticker": "5334",
-    "name": "Niterra Co., Ltd.",
+    "name": "NITERRA CO LTD",
     "price": 8295,
     "diff_val": 54,
     "diff_pct": 0.7,
@@ -33,11 +33,11 @@
     "rank": "C",
     "stats": null,
     "vol_dry": 97,
-    "comment": "偵察。打診買い。"
+    "comment": "偵察。監視継続。"
   },
   {
     "ticker": "3498",
-    "name": "Kasumigaseki Capital Co.,Ltd.",
+    "name": "KASUMIGASEKI CAPITAL CO LTD",
     "price": 6390,
     "diff_val": 110,
     "diff_pct": 1.8,
@@ -45,6 +45,234 @@
     "rank": "C",
     "stats": null,
     "vol_dry": 93,
-    "comment": "偵察。打診買い。"
+    "comment": "偵察。監視継続。"
+  },
+  {
+    "ticker": "7164",
+    "name": "ZENKOKU HOSHO CO LTD",
+    "price": 3241,
+    "diff_val": 48,
+    "diff_pct": 1.5,
+    "lc_price": 3036,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 138,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "8593",
+    "name": "MITSUBISHI HC CAPITAL INC",
+    "price": 1473,
+    "diff_val": 4,
+    "diff_pct": 0.3,
+    "lc_price": 1397,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 109,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "9368",
+    "name": "KIMURA UNITY CO",
+    "price": 888,
+    "diff_val": -4,
+    "diff_pct": -0.4,
+    "lc_price": 849,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 94,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "5076",
+    "name": "INFRONEER HLDGS INC",
+    "price": 2095,
+    "diff_val": -46,
+    "diff_pct": -2.1,
+    "lc_price": 1997,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 96,
+    "comment": "偵察。監視継続。"
+  },
+  {
+    "ticker": "6293",
+    "name": "NISSEI PLASTIC INDUSTRIAL CO",
+    "price": 852,
+    "diff_val": 0,
+    "diff_pct": 0.0,
+    "lc_price": 817,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 84,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "4481",
+    "name": "BASE CO LTD",
+    "price": 3395,
+    "diff_val": 95,
+    "diff_pct": 2.9,
+    "lc_price": 3134,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 130,
+    "comment": "偵察。監視継続。"
+  },
+  {
+    "ticker": "2154",
+    "name": "OPEN UP GROUP INC",
+    "price": 1770,
+    "diff_val": -8,
+    "diff_pct": -0.4,
+    "lc_price": 1687,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 80,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "4043",
+    "name": "TOKUYAMA CORP",
+    "price": 3870,
+    "diff_val": 30,
+    "diff_pct": 0.8,
+    "lc_price": 3608,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 105,
+    "comment": "偵察。監視継続。"
+  },
+  {
+    "ticker": "6070",
+    "name": "CAREERLINK CO LTD",
+    "price": 2414,
+    "diff_val": -21,
+    "diff_pct": -0.9,
+    "lc_price": 2304,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 108,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "7995",
+    "name": "VALQUA LTD",
+    "price": 5540,
+    "diff_val": 230,
+    "diff_pct": 4.3,
+    "lc_price": 5078,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 106,
+    "comment": "偵察。監視継続。"
+  },
+  {
+    "ticker": "9303",
+    "name": "SUMITOMO WAREHOUSE CO",
+    "price": 3955,
+    "diff_val": -145,
+    "diff_pct": -3.5,
+    "lc_price": 3796,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 142,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "4221",
+    "name": "OKURA INDUSTRIAL CO",
+    "price": 4815,
+    "diff_val": -20,
+    "diff_pct": -0.4,
+    "lc_price": 4536,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 64,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "9436",
+    "name": "OKINAWA CELLULAR",
+    "price": 3460,
+    "diff_val": 35,
+    "diff_pct": 1.0,
+    "lc_price": 3264,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 101,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "6323",
+    "name": "RORZE CORP",
+    "price": 3819,
+    "diff_val": -150,
+    "diff_pct": -3.8,
+    "lc_price": 3549,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 122,
+    "comment": "偵察。監視継続。"
+  },
+  {
+    "ticker": "8005",
+    "name": "SCROLL CORPORATION",
+    "price": 1355,
+    "diff_val": 26,
+    "diff_pct": 2.0,
+    "lc_price": 1256,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 115,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "8058",
+    "name": "MITSUBISHI CORP",
+    "price": 5086,
+    "diff_val": -221,
+    "diff_pct": -4.2,
+    "lc_price": 4777,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 114,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "7203",
+    "name": "TOYOTA MOTOR CORP",
+    "price": 3392,
+    "diff_val": 73,
+    "diff_pct": 2.2,
+    "lc_price": 3148,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 89,
+    "comment": "偵察。監視継続。"
+  },
+  {
+    "ticker": "9104",
+    "name": "MITSUI O.S.K. LINES LTD",
+    "price": 6380,
+    "diff_val": -93,
+    "diff_pct": -1.4,
+    "lc_price": 5981,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 143,
+    "comment": "チャンス近し。週足の形を注視。"
+  },
+  {
+    "ticker": "8306",
+    "name": "MITSUBISHI UFJ FINANCIAL GROUP ",
+    "price": 2946,
+    "diff_val": 104,
+    "diff_pct": 3.7,
+    "lc_price": 2712,
+    "rank": "C",
+    "stats": null,
+    "vol_dry": 89,
+    "comment": "偵察。監視継続。"
   }
 ]
