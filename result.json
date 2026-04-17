@@ -274,5 +274,17 @@
     "stats": null,
     "vol_dry": 89,
     "comment": "偵察。監視継続。"
+  },
+  {
+    "ticker": "4502",
+    "name": "TAKEDA PHARMACEUTICAL CO LTD",
+    "price": 5646,
+    "diff_val": -86,
+    "diff_pct": -1.5,
+    "lc_price": 5358,
+    "rank": "B",
+    "stats": null,
+    "vol_dry": 97,
+    "comment": "チャンス近し。週足の形を注視。"
   }
 ]
