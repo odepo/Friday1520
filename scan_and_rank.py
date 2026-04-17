@@ -15,6 +15,7 @@ WATCH_LIST = [
 
 OUTPUT_FILE = "result.json"
 
+# RANK Aの期待値データ
 STATS_RANK_A = {
     "win_rate": {"value": 72, "avg": 50},
     "pf": {"value": 2.1, "avg": 1.2},
@@ -33,20 +34,16 @@ def analyze_stock(ticker):
         t_obj = yf.Ticker(ticker)
         s_name = t_obj.info.get('shortName', ticker)
         
+        # 週足データの取得
         df = yf.download(ticker, period="2y", interval="1wk", progress=False)
         if df.empty or len(df) < 30: return None
+        if isinstance(df.columns, pd.MultiIndex): df.columns = df.columns.get_level_values(0)
 
-        if isinstance(df.columns, pd.MultiIndex):
-            df.columns = df.columns.get_level_values(0)
-
+        # 指標計算
         close_col = 'Close'
         df['rci9'] = calculate_rci(df[close_col], 9)
-        
-        # VCP分析用：ボラティリティ
         df['high_low_range'] = (df['High'] - df['Low']) / df['Low'] * 100
         w3_volatility = df['high_low_range'].iloc[-5:].mean() 
-        
-        # 需給分析用：出来高
         avg_vol = df['Volume'].rolling(window=20).mean().iloc[-1]
         last_vol = df['Volume'].iloc[-5:].mean()
         v_ratio = int(last_vol / avg_vol * 100)
@@ -66,49 +63,40 @@ def analyze_stock(ticker):
         diff_pct = round((diff_val / prev[close_col]) * 100, 1)
         lc_price = int(last['Low'] * 0.96)
 
-        # --- 軍師による多角的な分析コメント生成 ---
+        # --- 活用ガイド型・軍師コメント生成 ---
         rank = "C"; stats = None
-        advice = "【偵察】\nまだ敵（売り圧力）が多い。静観し、戦機（需給の引き締まり）を待て。"
+        advice = "【偵察】まだ戦機にあらず。静観せよ。"
         
-        if rci_rev:
-            if vcp_score >= 80:
+        if rci_rev or vcp_score >= 50:
+            if rci_rev and vcp_score >= 80:
                 rank = "A"; stats = STATS_RANK_A
-                advice = (f"【総攻撃の好機：RANK A】\n"
-                          f"①反撃の狼煙：週足RCIが底部({rci_val})から反転。底打ちを確認。\n"
-                          f"②兵糧攻め：出来高が平均の{v_ratio}%まで激減。売り手が不在だ。\n"
-                          f"③陣形：ボラが{w3_volatility:.1f}%まで収縮。爆発準備完了。\n"
-                          f"★チャートで『直近の小高い山』を抜けるか注視せよ！")
+                title = "🚀【総攻撃】執行せよ！"
             else:
-                rank = "B"
-                advice = (f"【戦備を整えよ：RANK B】\n"
-                          f"RCIは好転したが、まだ値動きに迷いがある。ボラ({w3_volatility:.1f}%)が5%を切るのを待て。\n"
-                          f"★チャートで移動平均線が『横ばい』になっているか確認。")
-        elif vcp_score >= 50:
-            rank = "B"
-            advice = (f"【嵐の前の静けさ：RANK B】\n"
-                      f"ボラは絞られてきたがRCIがまだ下向きだ。反転の兆しを待て。")
+                rank = "B"; title = "🏹【準備】監視を強めよ"
+            
+            advice = (f"{title}\n"
+                      f"------------------------\n"
+                      f"📉 チャート調査の3か条ガイド\n"
+                      f"1. RCI反転(狼煙): 現在 {rci_val}\n"
+                      f"   目視：谷底から這い上がったか？\n"
+                      f"2. VCP収縮(陣形): 現在 {w3_volatility:.1f}%\n"
+                      f"   目視：細い糸のように並んでいるか？\n"
+                      f"3. 売り枯れ(兵糧): 現在 {v_ratio}%\n"
+                      f"   目視：出来高が地面に這っているか？\n"
+                      f"------------------------\n"
+                      f"★上記3点が『合致』なら成り行き執行！")
 
         return {
-            "ticker": ticker.replace(".T", ""),
-            "name": s_name,
-            "price": price,
-            "diff_val": diff_val,
-            "diff_pct": diff_pct,
-            "lc_price": lc_price,
-            "rank": rank,
-            "stats": stats,
-            "vol_dry": int((last_vol/avg_vol)*100),
-            "comment": advice
+            "ticker": ticker.replace(".T", ""), "name": s_name, "price": price,
+            "diff_val": diff_val, "diff_pct": diff_pct, "lc_price": lc_price,
+            "rank": rank, "stats": stats, "vol_dry": v_ratio, "comment": advice
         }
-    except Exception as e:
-        print(f"Error analyzing {ticker}: {e}")
-        return None
+    except Exception: return None
 
 if __name__ == "__main__":
     results = []
     for t in WATCH_LIST:
         res = analyze_stock(t)
         if res: results.append(res)
-            
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
